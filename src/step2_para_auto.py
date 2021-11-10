@@ -26,6 +26,7 @@ def submit_process(args):
     df_init_params = pd.read_csv(init_params_csv)
     df_init_params = df_init_params.iloc[0]
     params_dict = df_init_params.to_dict()
+    os.chdir(os.path.join(args.auto_dir,'gaussian'))
     log_file= exec_gjf(auto_dir, monomer_name, params_dict,isTest)
     print(log_file)
 
