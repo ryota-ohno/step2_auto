@@ -19,6 +19,9 @@ def submit_process(args):
     auto_dir = args.auto_dir
     monomer_name = args.monomer_name
     isTest= args.isTest
+    isMain= args.isMain
+    if isMain:
+        return
     isEnd= args.isEnd
     if isEnd:
         return
@@ -28,6 +31,7 @@ def submit_process(args):
     params_dict = df_init_params.to_dict()
     os.chdir(os.path.join(args.auto_dir,'gaussian'))
     log_file= exec_gjf(auto_dir, monomer_name, params_dict,isTest)
+    time.sleep(2)
     print(log_file)
 
 
@@ -161,6 +165,7 @@ if __name__ == '__main__':
     #parser.add_argument('--init',action='store_true')
     parser.add_argument('--isTest',action='store_true')
     parser.add_argument('--isEnd',action='store_true')
+    parser.add_argument('--isMain',action='store_true')
     parser.add_argument('--auto-dir',type=str,help='path to dir which includes gaussian, gaussview and csv')
     parser.add_argument('--monomer-name',type=str,help='monomer name')
     parser.add_argument('--num-nodes',type=int,help='num nodes')
