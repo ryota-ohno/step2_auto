@@ -147,7 +147,7 @@ def end_process(args):
     init_rts=[]
     result_params_csv=os.path.join(auto_dir, 'step2_result_params.csv')
     for i in range(len(ma[0])):
-        rts_init=[a_,b_,theta,rt_list[ma[0][i]],rs_list[ma[1][i]],'NotYet']
+        rts_init=[a_,b_,theta,r_list[ma[0][i]],r_list[ma[1][i]],'NotYet']
         init_rts.append(rts_init)
     df_init_params = pd.DataFrame(np.array(init_rts),columns = ['a','b','theta','R3','R4','status'])##いじる
     df_init_params.to_csv(result_params_csv,index=False)
