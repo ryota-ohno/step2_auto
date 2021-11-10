@@ -75,6 +75,7 @@ def get_file_base_name(monomer_name,params_dict):
     file_base_name += monomer_name
     file_base_name += '_step2_'
     file_base_name += 'a={}_b={}_theta={}_'.format(a_,b_,theta)
+    return file_base_name
 
 def end_process(args):
     auto_dir = args.auto_dir
