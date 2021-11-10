@@ -22,9 +22,10 @@ def submit_process(args):
     isEnd= args.isEnd
     if isEnd:
         return
-    init_params_csv=os.path.join(auto_dir, 'step1_init_params.csv')
+    init_params_csv=os.path.join(auto_dir, 'step2_init_params.csv')
     df_init_params = pd.read_csv(init_params_csv)
-    params_dict = df_init_params[0,:].to_dict()
+    df_init_params = df_init_params.iloc[0]
+    params_dict = df_init_params.to_dict()
     log_file= exec_gjf(auto_dir, monomer_name, params_dict,isTest)
     print(log_file)
 
@@ -39,9 +40,10 @@ def main_process(args):
     os.makedirs(os.path.join(auto_dir,'gaussian'), exist_ok=True)
     os.makedirs(os.path.join(auto_dir,'gaussview'), exist_ok=True)
 
-    init_params_csv=os.path.join(auto_dir, 'step1_init_params.csv')
+    init_params_csv=os.path.join(auto_dir, 'step2_init_params.csv')
     df_init_params = pd.read_csv(init_params_csv)
-    params_dict = df_init_params[0,:].to_dict()
+    df_init_params = df_init_params.iloc[0]
+    params_dict = df_init_params.to_dict()
     file_base_name = get_file_base_name(monomer_name,params_dict)
     file_name_1 = file_base_name
     file_name_2 = file_base_name
@@ -77,9 +79,10 @@ def get_file_base_name(monomer_name,params_dict):
 def end_process(args):
     auto_dir = args.auto_dir
     monomer_name = args.monomer_name
-    init_params_csv=os.path.join(auto_dir, 'step1_init_params.csv')
+    init_params_csv=os.path.join(auto_dir, 'step2_init_params.csv')
     df_init_params = pd.read_csv(init_params_csv)
-    params_dict = df_init_params[0,:].to_dict()
+    df_init_params = df_init_params.iloc[0]
+    params_dict = df_init_params.to_dict()
     a_ = params_dict['a']; b_ = params_dict['b']
     theta = params_dict['theta']
     file_base_name = get_file_base_name(monomer_name,params_dict)
