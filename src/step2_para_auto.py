@@ -25,6 +25,7 @@ def submit_process(args):
     isEnd= args.isEnd
     if isEnd:
         return
+    os.makedirs(os.path.join(auto_dir,'gaussian'),exist_ok=True)
     init_params_csv=os.path.join(auto_dir, 'step2_init_params.csv')
     df_init_params = pd.read_csv(init_params_csv)
     df_init_params = df_init_params.iloc[0]
